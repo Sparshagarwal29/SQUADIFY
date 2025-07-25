@@ -1,0 +1,289 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+  
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* ========== MAIN APP STYLES ========== */
+
+/* Header styles */
+.header {
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header div {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header label {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.header button {
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.header button:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Add a "Home" label at the start */
+.header::before {
+  content: "Home";
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Middle section styles */
+.middleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.middleSection h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  line-height: 1.2;
+  max-width: 600px;
+}
+
+/* Button styles */
+.start_btn {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 12px 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.start_btn:hover {
+  background-color: #d0d0d0;
+  color: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.start_btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== SIGNUP COMPONENT STYLES ========== */
+
+/* Navigation styles for SignUp page */
+.signup-nav {
+  background-color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.signup-nav span {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.signup-nav span:hover {
+  color: #333;
+}
+
+.signup-nav span:first-child::before {
+  content: "Home";
+  margin-right: 30px;
+  color: #666;
+  position: absolute;
+  left: -60px;
+}
+
+/* SignUp form container */
+.signup-middle {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* SignUp heading */
+.signup-middle h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+  text-transform: capitalize;
+}
+
+/* SignUp input styles */
+.signup-middle input[type="text"],
+.signup-middle input[type="email"],
+.signup-middle input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.signup-middle input[type="text"]:focus,
+.signup-middle input[type="email"]:focus,
+.signup-middle input[type="password"]:focus {
+  outline: none;
+  border-color: #4CAF50;
+  background-color: white;
+}
+
+.signup-middle input::placeholder {
+  color: #999;
+}
+
+/* SignUp primary button */
+.signup-middle .signup-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #d0d0d0;
+  color: #666;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s;
+}
+
+.signup-middle .signup-btn:hover {
+  background-color: #c0c0c0;
+}
+
+/* SignUp bottom text and login section */
+.signup-middle .login-section {
+  text-align: left;
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-middle .login-section .login-text {
+  display: inline;
+  margin-right: 5px;
+}
+
+.signup-middle .login-section .login-link {
+  display: inline;
+}
+
+/* Login button in SignUp form */
+.signup-middle .login-section .login-btn {
+  background: none;
+  border: none;
+  color: #4CAF50;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 5px;
+}
+
+.signup-middle .login-section .login-btn:hover {
+  color: #45a049;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Main app responsive */
+@media (max-width: 768px) {
+  .middleSection h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .header {
+    padding: 10px 15px;
+  }
+  
+  .header label {
+    gap: 10px;
+  }
+  
+  .header button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .middleSection h1 {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  
+  .start_btn {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+  
+  /* SignUp responsive */
+  .signup-middle {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+  
+  .signup-nav {
+    padding: 12px 15px;
+  }
+  
+  .signup-nav span:first-child::before {
+    left: -50px;
+  }
+}
