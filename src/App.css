@@ -1,66 +1,53 @@
 /* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-  
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #333; }
 
-/* ========== MAIN APP STYLES ========== */
-
-/* Header styles */
-.header {
-  background-color: white;
+/* Common navigation styles */
+.header, .login-nav, .signup-nav, .Dashboard, .SignUp-nav {
+  background: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
   border-bottom: 1px solid #e0e0e0;
-  padding: 12px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.header div {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.header { position: sticky; top: 0; z-index: 100; }
+.header::before { content: "Home"; font-weight: 600; color: #333; font-size: 16px; }
+.header div { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
 
-.header label {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.header button {
-  background: none;
+/* Common button styles */
+button, .start_btn, .login-btn, .signup-btn, .Signup-Page-btn, .edit-profile-btn, .view-team-btn {
   border: none;
   padding: 8px 16px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  color: #666;
   border-radius: 6px;
   transition: all 0.2s ease;
 }
 
-.header button:hover {
-  background-color: #f0f0f0;
+.header button, .Dashboard button, .team-home {
+  background: none;
+  color: #666;
+}
+
+.header button:hover, .Dashboard button:hover, .team-home:hover {
+  background: #f0f0f0;
   color: #333;
 }
 
-/* Add a "Home" label at the start */
-.header::before {
-  content: "Home";
-  font-weight: 600;
-  color: #333;
-  font-size: 16px;
+.start_btn {
+  background: #e0e0e0;
+  color: #666;
+  padding: 12px 32px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
+.start_btn:hover { background: #d0d0d0; color: #333; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
 /* Middle section styles */
 .middleSection {
@@ -73,87 +60,19 @@ body {
   text-align: center;
 }
 
-.middleSection h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 40px;
-  line-height: 1.2;
-  max-width: 600px;
-}
+.middleSection h1 { font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 40px; max-width: 600px; }
 
-/* Button styles */
-.start_btn {
-  background-color: #e0e0e0;
-  border: none;
-  padding: 12px 32px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #666;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.start_btn:hover {
-  background-color: #d0d0d0;
-  color: #333;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.start_btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* ========== LOGIN COMPONENT STYLES (formerly signup styles) ========== */
-
-/* Navigation styles for Login page */
-.login-nav {
-  background-color: white;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.login-nav span {
-  font-size: 16px;
-  color: #666;
-  cursor: pointer;
-  transition: color 0.2s;
-  position: relative;
-}
-
-.login-nav span:hover {
-  color: #333;
-}
-
-.login-nav span:first-child::before {
-  content: "Home";
-  margin-right: 30px;
-  color: #666;
-  position: absolute;
-  left: -60px;
-}
-
-/* Login form container */
-.login-middle {
+/* Form containers */
+.login-middle, .signup-middle, .SignUp-middle {
   max-width: 400px;
   margin: 50px auto;
-  background-color: white;
+  background: white;
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Login heading */
-.login-middle h1 {
+.login-middle h1, .signup-middle h1, .SignUp-middle h1 {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 30px;
@@ -161,10 +80,8 @@ body {
   text-transform: capitalize;
 }
 
-/* Login input styles */
-.login-middle input[type="text"],
-.login-middle input[type="email"],
-.login-middle input[type="password"] {
+/* Form inputs */
+input[type="text"], input[type="email"], input[type="password"], input[type="name"], input[type="number"] {
   width: 100%;
   padding: 12px 15px;
   margin-bottom: 15px;
@@ -172,99 +89,56 @@ body {
   border-radius: 4px;
   font-size: 14px;
   color: #333;
-  background-color: #f9f9f9;
+  background: #f9f9f9;
   transition: border-color 0.2s, background-color 0.2s;
 }
 
-.login-middle input[type="text"]:focus,
-.login-middle input[type="email"]:focus,
-.login-middle input[type="password"]:focus {
-  outline: none;
-  border-color: #4CAF50;
-  background-color: white;
-}
+input:focus { outline: none; border-color: #4CAF50; background: white; }
+input::placeholder { color: #999; }
 
-.login-middle input::placeholder {
-  color: #999;
-}
-
-/* Login primary button */
-.login-middle .login-btn {
+/* Form buttons */
+.login-btn, .signup-btn {
   width: 100%;
   padding: 12px;
-  background-color: #d0d0d0;
+  background: #d0d0d0;
   color: #666;
-  border: none;
   border-radius: 4px;
   font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
   margin-bottom: 20px;
-  transition: background-color 0.2s;
 }
 
-.login-middle .login-btn:hover {
-  background-color: #c0c0c0;
+.login-btn:hover, .signup-btn:hover { background: #c0c0c0; }
+
+.Signup-Page-btn {
+  width: 100%;
+  padding: 12px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-/* Login bottom text and signup section */
-.login-middle .signup-section {
+.Signup-Page-btn:hover { background: #45a049; transform: translateY(-1px); }
+
+/* Form navigation text */
+.signup-section, .login-section {
   text-align: left;
   font-size: 14px;
   color: #666;
 }
 
-.login-middle .signup-section .signup-text {
-  display: inline;
-  margin-right: 5px;
-}
-
-.login-middle .signup-section .signup-link {
-  display: inline;
-}
-
-/* Signup button in Login form */
-.login-middle .signup-section .signup-btn {
+.signup-section .signup-btn, .login-section .login-btn {
   background: none;
-  border: none;
   color: #4CAF50;
-  font-size: 14px;
-  cursor: pointer;
   text-decoration: underline;
   padding: 0;
   margin-left: 5px;
+  width: auto;
 }
 
-.login-middle .signup-section .signup-btn:hover {
-  color: #45a049;
-}
-
-/* ========== SIGNUP COMPONENT STYLES (formerly login styles) ========== */
-
-/* Navigation styles for SignUp page */
-.signup-nav {
-  background-color: white;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.signup-nav span {
-  font-size: 16px;
-  color: #666;
-  cursor: pointer;
-  transition: color 0.2s;
-  position: relative;
-}
-
-.signup-nav span:hover {
-  color: #333;
-}
-
-.signup-nav span:first-child::before {
+/* Navigation pseudo elements */
+.login-nav span:first-child::before, .signup-nav span:first-child::before, .SignUp-nav span:first-child::before {
   content: "Home";
   margin-right: 30px;
   color: #666;
@@ -272,194 +146,44 @@ body {
   left: -60px;
 }
 
-/* SignUp form container */
-.signup-middle {
-  max-width: 400px;
-  margin: 50px auto;
-  background-color: white;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* SignUp heading */
-.signup-middle h1 {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 30px;
-  color: #333;
-  text-transform: capitalize;
-}
-
-/* SignUp input styles */
-.signup-middle input[type="text"],
-.signup-middle input[type="email"],
-.signup-middle input[type="password"] {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-  color: #333;
-  background-color: #f9f9f9;
-  transition: border-color 0.2s, background-color 0.2s;
-}
-
-.signup-middle input[type="text"]:focus,
-.signup-middle input[type="email"]:focus,
-.signup-middle input[type="password"]:focus {
-  outline: none;
-  border-color: #4CAF50;
-  background-color: white;
-}
-
-.signup-middle input::placeholder {
-  color: #999;
-}
-
-/* SignUp primary button */
-.signup-middle .signup-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #d0d0d0;
+.login-nav span, .signup-nav span, .SignUp-nav span {
   color: #666;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 500;
   cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.2s;
+  transition: color 0.2s;
+  position: relative;
 }
 
-.signup-middle .signup-btn:hover {
-  background-color: #c0c0c0;
-}
+.login-nav span:hover, .signup-nav span:hover, .SignUp-nav span:hover { color: #333; }
 
-/* SignUp bottom text and login section */
-.signup-middle .login-section {
-  text-align: left;
-  font-size: 14px;
-  color: #666;
-}
+/* Dashboard styles */
+.DASH-home { font-weight: 600; color: #333; }
+.team-home { display: flex; align-items: center; gap: 5px; }
 
-.signup-middle .login-section .login-text {
-  display: inline;
-  margin-right: 5px;
-}
-
-.signup-middle .login-section .login-link {
-  display: inline;
-}
-
-/* Login button in SignUp form */
-.signup-middle .login-section .login-btn {
-  background: none;
-  border: none;
-  color: #4CAF50;
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 0;
-  margin-left: 5px;
-}
-
-.signup-middle .login-section .login-btn:hover {
-  color: #45a049;
-}
-
-/* ========== DASHBOARD COMPONENT STYLES ========== */
-
-/* Dashboard navigation styles */
-.Dashboard {
-  background-color: white;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.Dashboard button {
-  background: none;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  color: #666;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.Dashboard button:hover {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.Dashboard .DASH-home {
-  font-weight: 600;
-  color: #333;
-}
-
-.Dashboard .team-home {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background: none;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  color: #666;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.Dashboard .team-home:hover {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-/* Dashboard main content */
 .middle_Dash {
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-.middle_Dash h1 {
-  font-size: 28px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 30px;
-}
+.middle_Dash h1 { font-size: 28px; font-weight: 600; color: #333; margin-bottom: 30px; }
 
-/* Profile card styles */
-.cart {
-  background-color: white;
+/* Profile cards */
+.cart, .profile {
+  background: white;
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 30px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   border: 1px solid #e0e0e0;
 }
 
-.profile-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  margin-bottom: 25px;
-}
+.profile-container { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 25px; }
 
 .profile-avatar {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -468,189 +192,45 @@ body {
   flex-shrink: 0;
 }
 
-.profile-info {
-  flex-grow: 1;
-}
+.profile-name { width: 150px; height: 16px; background: #e0e0e0; border-radius: 4px; margin-bottom: 8px; }
+.profile-details { width: 200px; height: 12px; background: #e0e0e0; border-radius: 4px; margin-bottom: 6px; }
+.profile-details:last-child { width: 180px; }
 
-.profile-name {
-  width: 150px;
-  height: 16px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
-
-.profile-details {
-  width: 200px;
-  height: 12px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
-  margin-bottom: 6px;
-}
-
-.profile-details:last-child {
-  width: 180px;
-}
-
-.edit-profile-btn {
-  background-color: #e0e0e0;
-  border: none;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 500;
+.edit-profile-btn, .view-team-btn {
+  background: #e0e0e0;
   color: #666;
+  font-size: 12px;
   border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
   margin-top: 15px;
 }
 
-.edit-profile-btn:hover {
-  background-color: #d0d0d0;
-  color: #333;
-}
+.edit-profile-btn:hover, .view-team-btn:hover { background: #d0d0d0; color: #333; }
 
-.skills-section h3 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 15px;
-}
+.skills-section h3 { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 15px; }
+.skills-container { display: flex; gap: 10px; }
+.skill-tag { width: 80px; height: 24px; background: #e0e0e0; border-radius: 12px; }
+.skill-tag:nth-child(2) { width: 60px; }
 
-.skills-container {
-  display: flex;
-  gap: 10px;
-}
+.profile h2 { font-size: 20px; font-weight: 600; color: #333; margin-bottom: 20px; }
+.team-info { display: flex; justify-content: space-between; align-items: flex-start; }
+.team-details h4 { font-size: 14px; font-weight: 500; color: #666; margin-bottom: 8px; }
+.team-name-placeholder { width: 120px; height: 14px; background: #e0e0e0; border-radius: 4px; }
 
-.skill-tag {
-  width: 80px;
-  height: 24px;
-  background-color: #e0e0e0;
-  border-radius: 12px;
-}
-
-.skill-tag:nth-child(2) {
-  width: 60px;
-}
-
-/* Team section styles */
-.profile {
-  background-color: white;
-  border-radius: 8px;
-  padding: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e0e0e0;
-}
-
-.profile h2 {
-  font-size: 20px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.team-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.team-details h4 {
-  font-size: 14px;
-  font-weight: 500;
-  color: #666;
-  margin-bottom: 8px;
-}
-
-.team-name-placeholder {
-  width: 120px;
-  height: 14px;
-  background-color: #e0e0e0;
-  border-radius: 4px;
-}
-
-.view-team-btn {
-  background-color: #e0e0e0;
-  border: none;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #666;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.view-team-btn:hover {
-  background-color: #d0d0d0;
-  color: #333;
-}
-
-/* ========== DASHBOARD RESPONSIVE DESIGN ========== */
-
+/* Responsive design */
 @media (max-width: 768px) {
-  .middle_Dash {
-    margin: 20px auto;
-    padding: 0 15px;
-  }
-  
-  .middle_Dash h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .cart,
-  .profile {
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .profile-container {
-    gap: 15px;
-  }
-  
-  .profile-avatar {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-  }
-  
-  .Dashboard {
-    padding: 12px 15px;
-    gap: 20px;
-  }
-  
-  .Dashboard button {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
+  .middle_Dash { margin: 20px auto; padding: 0 15px; }
+  .middle_Dash h1 { font-size: 24px; margin-bottom: 20px; }
+  .cart, .profile { padding: 20px; margin-bottom: 20px; }
+  .profile-container { gap: 15px; }
+  .profile-avatar { width: 60px; height: 60px; font-size: 24px; }
+  .header, .login-nav, .signup-nav, .Dashboard, .SignUp-nav { padding: 12px 15px; gap: 20px; }
 }
 
 @media (max-width: 480px) {
-  .middle_Dash h1 {
-    font-size: 20px;
-  }
-  
-  .cart,
-  .profile {
-    padding: 15px;
-  }
-  
-  .profile-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .team-info {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .view-team-btn {
-    align-self: flex-start;
-  }
-  
-  .Dashboard {
-    gap: 15px;
-  }
+  .middle_Dash h1 { font-size: 20px; }
+  .cart, .profile { padding: 15px; }
+  .profile-container { flex-direction: column; text-align: center; }
+  .team-info { flex-direction: column; gap: 15px; }
+  .view-team-btn { align-self: flex-start; }
+  .login-middle, .signup-middle, .SignUp-middle { margin: 30px auto; padding: 30px 20px; }
 }

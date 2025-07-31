@@ -41,7 +41,9 @@ const Login = () => {
                 <div className="signup-section">
                     <span className="signup-text">Don't have an account?</span>
                     <span className="signup-link">
-                        <button type="button" className="signup-btn">Sign up</button>
+                        <Link to="/SignUP">
+                            <button type="button" className="signup-btn">Sign up</button>
+                        </Link>
                     </span>
                 </div>
             </div>
