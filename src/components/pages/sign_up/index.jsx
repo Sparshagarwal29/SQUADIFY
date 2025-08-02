@@ -11,7 +11,6 @@ export const Signup =() =>{
                 <h1>Login</h1>
                 <input  type="name" name="Email" required placeholder="Name"/>
                 <input  type="email" name="Email" required placeholder="Email"/>
-                <input  type="number" name="Email" required placeholder="Number"/>
                 <input   type="password" name="Password" required placeholder="Password"/>
                 <button  type="submit" className="Signup-Page-btn">SignUP</button>
             </div>
