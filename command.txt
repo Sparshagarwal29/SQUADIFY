@@ -2,3 +2,7 @@ to create venv (virtual envionment ) ===  source venv/Scripts/activate
 to activate FastApi == uvicorn main:app --reload
 to see all depency == pip list 
 to deactivate virtual environment === deactivate
+database command :
+=== \dt; --> to get the list of all table in the database
+=== \d users; to Shows the structure/schema of the users table (how is the table build)
+=== SELECT * FROM users; == atual data inside the table name users 

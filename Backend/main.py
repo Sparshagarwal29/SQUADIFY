@@ -9,7 +9,7 @@ app = FastAPI()
 model.Base.metadata.create_all(bind=engine)
 
 def get_db():
-    db=  sessionLocal()
+    db= SessionLocal()
     try:
         yield db
     except Exception as e:
@@ -28,5 +28,9 @@ def read_root():
 
 
 @app.post("/User")
-def create_blog(user: Schema.User):
-    return {"Blog": f"this is {user.username} with id as {user.id} and mail as {user.email}"}
+def create_User(user: Schema.User,db: db_dependency):
+    newUser = model.User(username = user.username , email = user.email,hashed_password=user.hashed_password )
+    db.add(newUser)
+    db.commit()
+    db.refresh(newUser)
+    return newUser
