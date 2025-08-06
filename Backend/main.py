@@ -44,7 +44,7 @@ def get_User(id:int , db: db_dependency):
 
 @app.delete("/User/{id}")
 def delt_User(id:int,db: db_dependency):
-    user = db.query(model.User).filter(model.User.id == id).first()
+    user = db.query(model.User).filter(model.User.id == id).delete(synchronize_session=False)
     if not user:
         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
     db.delete(user)

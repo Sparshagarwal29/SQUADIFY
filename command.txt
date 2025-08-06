@@ -1,6 +1,5 @@
 to create venv (virtual envionment ) ===  source venv/Scripts/activate
-to activate FastApi == uvicorn main:app --reload
-to see all depency == pip list 
+to activate FastApi ==     uvicorn main:app --reload
 to deactivate virtual environment === deactivate
 database command :
 === \dt; --> to get the list of all table in the database
