@@ -1,13 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Union, Optional
 
-# class Blog(BaseModel):  
-#     title: str
-#     body: str
-#     publication: Optional[int] = None
-
-
-
 class UserCreate(BaseModel):
     username: str
     email: EmailStr
