@@ -22,13 +22,8 @@ def get_db():
 db_dependency = Annotated[Session, Depends(get_db)]
 
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World mai hu giyan"}
-
-
 @app.post("/User",status_code=201)  #this is someWhat similar to API (Application Programming Interface)
-def create_User(user: Schema.User,db: db_dependency):
+def create_User(user: Schema.UserCreate,db: db_dependency):
     newUser = model.User(username = user.username , email = user.email,hashed_password=user.hashed_password )
     db.add(newUser)
     db.commit()
@@ -36,11 +31,16 @@ def create_User(user: Schema.User,db: db_dependency):
     return newUser
 
 
-@app.get("/User/{id}")
+@app.get("/User/{id}", response_model = Schema.showUser)
 def get_User(id:int , db: db_dependency):
     user = db.query(model.User).filter(model.User.id== id).first()
     if not user:
         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
+    return user
+    
+@app.get("/User")
+def all(db:db_dependency):
+    user = db.query(model.User).all()
     return user
 
 @app.delete("/User/{id}",status_code=204)
@@ -49,13 +49,17 @@ def delt_User(id:int,db: db_dependency):
     if deleteCount == 0:
         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
     db.commit()    
-    return None
+    return "deleted"
 
 @app.put("/User/{id}")
 def update(id:int , user: Schema.User , db: db_dependency):
-    db.query(model.User).filter(model.User.id == id).update(user)
+    updateUser = db.query(model.User).filter(model.User.id == id)
+    if not updateUser.first():
+        raise HTTPException(status_code=404, detail=f"User with id {id} not found")
+    updateUser.update(user.dict())
     db.commit()
-    return updated
+    updated_user = db.query(model.User).filter(model.User.id == id).first()
+    return updated_user  
 
 
 
