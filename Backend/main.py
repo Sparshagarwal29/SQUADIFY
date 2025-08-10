@@ -1,5 +1,6 @@
 from fastapi import FastAPI,Depends,HTTPException
 import Schema
+import auth
 import model
 from database import engine,SessionLocal
 from sqlalchemy.orm import Session
@@ -24,7 +25,7 @@ db_dependency = Annotated[Session, Depends(get_db)]
 
 @app.post("/User",status_code=201)  #this is someWhat similar to API (Application Programming Interface)
 def create_User(user: Schema.UserCreate,db: db_dependency):
-    newUser = model.User(username = user.username , email = user.email,hashed_password=user.hashed_password )
+    newUser = model.User(username = user.username , email = user.email,hashed_password=auth.Hash.get_password_hash(user.hashed_password))
     db.add(newUser)
     db.commit()
     db.refresh(newUser)
