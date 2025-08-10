@@ -35,6 +35,7 @@ def create_User(user: Schema.User,db: db_dependency):
     db.refresh(newUser)
     return newUser
 
+
 @app.get("/User/{id}")
 def get_User(id:int , db: db_dependency):
     user = db.query(model.User).filter(model.User.id== id).first()
@@ -42,17 +43,19 @@ def get_User(id:int , db: db_dependency):
         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
     return user
 
-@app.delete("/User/{id}")
+@app.delete("/User/{id}",status_code=204)
 def delt_User(id:int,db: db_dependency):
-    user = db.query(model.User).filter(model.User.id == id).delete(synchronize_session=False)
-    if not user:
+    deleteCount = db.query(model.User).filter(model.User.id == id).delete(synchronize_session=False)
+    if deleteCount == 0:
         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
-    db.delete(user)
     db.commit()    
-    # Instead of just {"ok": True}
-    return {"message": f"User with id {id} deleted successfully"}
+    return None
 
-
+@app.put("/User/{id}")
+def update(id:int , user: Schema.User , db: db_dependency):
+    db.query(model.User).filter(model.User.id == id).update(user)
+    db.commit()
+    return updated
 
 
 
