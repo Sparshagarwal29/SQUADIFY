@@ -4,7 +4,7 @@ from typing import Union, Optional
 class UserCreate(BaseModel):
     username: str
     email: EmailStr
-    hashed_password: str 
+    password: str 
 
 class User(BaseModel):
     username: str

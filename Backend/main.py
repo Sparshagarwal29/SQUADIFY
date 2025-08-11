@@ -1,6 +1,7 @@
 from fastapi import FastAPI,Depends,HTTPException
 import Schema
 import hashing
+from hashing import Hash 
 import model
 from database import engine,SessionLocal
 from sqlalchemy.orm import Session
@@ -69,6 +70,6 @@ def userLogin(request: Schema.Login ,db: db_dependency,):
     user = db.query(model.User).filter(model.User.email == request.username).first()
     if not user:
         raise HTTPException(status_code=404, detail=f"User not found")
-    if not Hash.verify(user.password,request.password):
+    if not Hash.verify_password(request.password,user.hashed_password):
         raise HTTPException(status_code=404, detail=f"INVALID PASSWORD")
     return user
