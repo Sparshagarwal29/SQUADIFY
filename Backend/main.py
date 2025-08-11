@@ -1,11 +1,14 @@
 from fastapi import FastAPI,Depends,HTTPException
+from datetime import datetime, timedelta, timezone
 import Schema
 import hashing
+import Authtoken
 from hashing import Hash 
 import model
 from database import engine,SessionLocal
 from sqlalchemy.orm import Session
 from typing import Annotated
+
 
 app = FastAPI()
 model.Base.metadata.create_all(bind=engine)
@@ -72,4 +75,10 @@ def userLogin(request: Schema.Login ,db: db_dependency,):
         raise HTTPException(status_code=404, detail=f"User not found")
     if not Hash.verify_password(request.password,user.hashed_password):
         raise HTTPException(status_code=404, detail=f"INVALID PASSWORD")
-    return user
+
+    # access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = Authtoken.create_access_token(
+        data={"sub": user.email}
+        # , expires_delta=access_token_expires
+    )
+    return Token(access_token=access_token, token_type="bearer")
