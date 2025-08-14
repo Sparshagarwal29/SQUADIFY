@@ -2,6 +2,7 @@ from fastapi import FastAPI,Depends,HTTPException
 from datetime import datetime, timedelta, timezone
 import Schema
 import hashing
+import middleware
 import Authtoken
 from hashing import Hash 
 import model
@@ -12,6 +13,7 @@ from typing import Annotated
 
 app = FastAPI()
 model.Base.metadata.create_all(bind=engine)
+
 
 def get_db():
     db= SessionLocal()
@@ -29,7 +31,7 @@ db_dependency = Annotated[Session, Depends(get_db)]
 
 @app.post("/User",status_code=201,tags=["users"])  #this is someWhat similar to API (Application Programming Interface)
 def create_User(user: Schema.UserCreate,db: db_dependency):
-    newUser = model.User(username = user.username , email = user.email,hashed_password=hashing.Hash.get_password_hash(user.hashed_password))
+    newUser = model.User(username = user.username , email = user.email,hashed_password=hashing.Hash.get_password_hash(user.password))
     db.add(newUser)
     db.commit()
     db.refresh(newUser)
