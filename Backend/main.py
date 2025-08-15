@@ -45,6 +45,9 @@ db_dependency = Annotated[Session, Depends(get_db)]
 
 @app.post("/User",status_code=201,tags=["users"])  #this is someWhat similar to API (Application Programming Interface)
 def create_User(user: Schema.UserCreate,db: db_dependency):
+    existing_user = db.query(model.User).filter(model.User.email == user.email).first()
+    if existing_user:
+        raise HTTPException(status_code=409, detail="Email already registered")
     newUser = model.User(username = user.username , email = user.email,hashed_password=hashing.Hash.get_password_hash(user.password))
     db.add(newUser)
     db.commit()
