@@ -12,29 +12,26 @@ const Login = () => {
     const onEmailChange = (e) =>{
         loginDispatch({
             type: 'EMAIL',
-            payload: {
-                value: e.target.value,
-            }
+            payload: e.target.value,
         });
         setError('');
     };
     const onPasswordChange = (e) =>{
         loginDispatch({
             type: 'PASSWORD',
-            payload: {
-                value: e.target.value
-            }
+            payload: e.target.value
         });
         setError('');
     };
     const validateForm = () =>{
+        const emailValue = email.value || email;
+        const passwordValue = password.value || password;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        console.log('Validating email:', email);
-        if (!emailRegex.test(email)) {
+        if (!emailRegex.test(emailValue)) {
             setError('Please enter a valid email address');
             return false;
         }
-        if (password.length < 8) {
+        if (passwordValue.length < 8) {
             setError('Password must be at least 8 characters long');
             return false;
         }
@@ -43,15 +40,26 @@ const Login = () => {
     const handleFormSubmit = async(e) => {
         e.preventDefault();
         setError('')
-        // if(!validateForm()) return
+        const emailValue = email.value || email;
+        const passwordValue = password.value || password;
+        if(!validateForm()) return
+
+        console.log('Final payload being sent to backend:', {
+            username: emailValue,
+            password: passwordValue
+        });
+
         setIsLoading(true);
         try{
-            const response = await api.post('/login',{username:email,password})
+            const response = await api.post('/login',{
+                username:emailValue,
+                password: passwordValue
+            })
             const{access_token} = response.data
             localStorage.setItem('token',access_token);
             loginDispatch({
                 type: "SetUser",
-                payload: {user:{email},token: access_token}
+                payload: {user:{emailValue},token: access_token}
             });
             navigate('/DashBoard');
         } catch(error){
@@ -74,10 +82,10 @@ const Login = () => {
                 <h1>Login</h1>
                 {error && <div className="error-message" style={{ color: 'red', marginBottom: '10px' }}>{error}</div>}
                 <input onChange={onEmailChange} type="email" 
-                    // value={email} 
+                    value={email} 
                     name="Email" required placeholder="Email" aria-label="Email address"/>
                 <input  onChange = {onPasswordChange} type="password" 
-                    // value={password}    
+                    value={password}    
                     name="Password" required placeholder="Password"/>
                 <button type="submit" className="login-btn" disabled={isLoading}>{isLoading ? 'Logging in...' : 'Login'}</button>
                 <div className="signup-section">

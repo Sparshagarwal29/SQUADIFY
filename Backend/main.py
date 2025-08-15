@@ -2,17 +2,31 @@ from fastapi import FastAPI,Depends,HTTPException
 from datetime import datetime, timedelta, timezone
 import Schema
 import hashing
-import middleware
+from fastapi.middleware.cors import CORSMiddleware
 import Authtoken
 from hashing import Hash 
 import model
 from database import engine,SessionLocal
 from sqlalchemy.orm import Session
 from typing import Annotated
+from pydantic import EmailStr
 
 
 app = FastAPI()
 model.Base.metadata.create_all(bind=engine)
+
+origins = [
+    "http://localhost:5173",
+    "http://localhost"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_db():
