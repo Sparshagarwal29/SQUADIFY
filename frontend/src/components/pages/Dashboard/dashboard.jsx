@@ -1,4 +1,5 @@
 import { Search } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const Dashboard =() =>{
     return (
@@ -15,6 +16,13 @@ const Dashboard =() =>{
                 <div className="profile">
                     <h2>Team</h2>
                     <p>Here is your team </p>
+                </div>
+                <div>
+                    <Link to="/CreateTeam">
+                        <button type="button">
+                                createTeam
+                        </button>
+                    </Link>
                 </div>
             </div>
         

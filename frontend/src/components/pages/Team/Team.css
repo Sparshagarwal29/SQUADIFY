@@ -1,0 +1,216 @@
+/* CreateTeam.css */
+
+/* Main form container */
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Team name section */
+.Team-Name {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.Team-member-h1 {
+  color: #222;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #2d3748, #4a5568);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
+.Team-Name-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.Team-Name-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Team size section */
+.Team-size {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.Team-member-select {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.Team-member-select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Team members section */
+.Team-member-About {
+  margin-top: 30px;
+}
+
+.Team-member-h3 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 10px;
+}
+
+.Team-member-h4 {
+  color: #555;
+  font-size: 18px;
+  margin: 20px 0 15px 0;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-left: 4px solid #007bff;
+  border-radius: 4px;
+}
+
+/* Team section container */
+.team-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual field sections */
+.name-Team-section,
+.role-Team-section,
+.email-Team-section,
+.contact-Team-section,
+.techstack-Team-section,
+.hobbies-Team-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.name-Team-section label,
+.role-Team-section label,
+.email-Team-section label,
+.contact-Team-section label,
+.techstack-Team-section label,
+.hobbies-Team-section label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Input fields */
+.Team-Info {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.Team-Info:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.Team-Info::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Submit section */
+.submit {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #eee;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  form {
+    padding: 15px;
+    margin: 10px;
+  }
+  
+  .team-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .Team-member-h3 {
+    font-size: 20px;
+  }
+  
+  .Team-member-h4 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Team-Name-input,
+  .Team-Info {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .submit-btn {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+}
