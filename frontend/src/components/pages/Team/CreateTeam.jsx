@@ -49,7 +49,8 @@ const CreateTeam = () =>{
         setTeamMembers(updateteammember);
     };
     const validateForm = () =>{
-        console.log("done");
+        console.log(teamsize);
+        console.log(teamMembers.index[0]);
     }
     return(
         <>
@@ -132,7 +133,7 @@ const CreateTeam = () =>{
                     ))}
                 </div>
                 <div className="submit">
-                    <button className="submit-btn">
+                    <button className="submit-btn" onClick={validateForm}>
                         Submit form
                     </button>
                 </div>
