@@ -49,10 +49,30 @@ const CreateTeam = () =>{
         setTeamMembers(updateteammember);
     };
     const validateForm = () =>{
+        e.preventDefault();
         console.log(teamsize);
         console.log(teamMembers.index[0]);
     }
-    return(
+    const handleFormSubmit = (e) =>{
+        e.preventDefault();
+        const emptyFields = teamMembers.map((member,index) =>({
+            memberIndex: index,
+           emptyKey: Object.keys(member).filter(key =>member[key]==='') 
+        }))
+        const hasEmptyKeys = emptyFields.some(member => member.emptyKey.length > 0);
+        if(hasEmptyKeys){
+            emptyFields.forEach(member => {
+                if (member.emptyKey.length > 0) {
+                    console.log(`Member ${member.memberIndex + 1} has empty fields: ${member.emptyKey.join(', ')}`);
+                }
+            });
+            console.log('Please fill all required fields.');
+            } else {
+                console.log('Proceed with form submission.');
+            }
+        };
+
+    return (
         <>
             <form onSubmit={validateForm} >
                 <div className="Team-Name">
@@ -133,7 +153,7 @@ const CreateTeam = () =>{
                     ))}
                 </div>
                 <div className="submit">
-                    <button className="submit-btn" onClick={validateForm}>
+                    <button className="submit-btn" onClick={handleFormSubmit}>
                         Submit form
                     </button>
                 </div>

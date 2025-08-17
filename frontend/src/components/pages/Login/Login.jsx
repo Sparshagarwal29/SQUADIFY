@@ -22,7 +22,7 @@ const Login = () => {
             payload: e.target.value
         });
         setError('');
-    };
+    };  
     const validateForm = () =>{
         const emailValue = email.value || email;
         const passwordValue = password.value || password;
@@ -43,12 +43,6 @@ const Login = () => {
         const emailValue = email.value || email;
         const passwordValue = password.value || password;
         if(!validateForm()) return
-
-        console.log('Final payload being sent to backend:', {
-            username: emailValue,
-            password: passwordValue
-        });
-
         setIsLoading(true);
         try{
             const response = await api.post('/login',{
