@@ -67,9 +67,11 @@ const CreateTeam = () =>{
                 }
             });
             console.log('Please fill all required fields.');
+            alert('Please fill all required fields.');
             } else {
                 console.log('Proceed with form submission.');
             }
+        console.log(teamMembers)
         };
 
     return (
