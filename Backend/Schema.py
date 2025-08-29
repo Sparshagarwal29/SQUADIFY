@@ -29,12 +29,13 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     username: Optional[str] = None
 
-class CreateTeam(BaseModel):
-    teamName: str 
-    teamSize: int
+class TeamMember(BaseModel):
     Name: str
     Role: str
     Email: EmailStr
     contact:  int
     TechStack: str
     Hobbies: str 
+class CreateTeam(BaseModel):
+    teamName: str 
+    teamSize: int
