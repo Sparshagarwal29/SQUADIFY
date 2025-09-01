@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr
-from typing import Union, Optional
+from typing import Union, Optional,List
 
 class UserCreate(BaseModel):
     username: str
@@ -33,9 +33,10 @@ class TeamMember(BaseModel):
     Name: str
     Role: str
     Email: EmailStr
-    contact:  int
+    contact:  str
     TechStack: str
     Hobbies: str 
 class CreateTeam(BaseModel):
     teamName: str 
     teamSize: int
+    members: List[TeamMember]
