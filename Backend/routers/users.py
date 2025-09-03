@@ -4,8 +4,9 @@ from sqlalchemy.orm import Session
 import model
 import hashing
 import Schema
-router = APIRouter()
 from database import get_db
+
+router = APIRouter()
 
 db_dependency = Annotated[Session, Depends(get_db)]
 
