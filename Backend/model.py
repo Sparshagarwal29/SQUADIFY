@@ -9,12 +9,14 @@ class User(Base):
     username = Column(String, index=True)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
+    teams = relationship("Team", back_populates="creator")
 
 class Team(Base):
     __tablename__ = "teams"
     id = Column(Integer, primary_key=True, index=True)
     team_name = Column(String, index=True, nullable=False)
     team_size = Column(Integer, nullable=False)
+    creator = relationship("User", back_populates="teams")
     members = relationship("TeamMember", back_populates="team")
 
 class TeamMember(Base):
