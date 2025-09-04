@@ -16,6 +16,7 @@ class Team(Base):
     id = Column(Integer, primary_key=True, index=True)
     team_name = Column(String, index=True, nullable=False)
     team_size = Column(Integer, nullable=False)
+    creator_id = Column(Integer, ForeignKey("users.id"))
     creator = relationship("User", back_populates="teams")
     members = relationship("TeamMember", back_populates="team")
 
