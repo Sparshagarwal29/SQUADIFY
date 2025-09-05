@@ -11,6 +11,8 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)  # type: ignore
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
+
+# def CreateTable()
 def get_db():
     db = SessionLocal()
     try:

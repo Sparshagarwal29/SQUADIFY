@@ -30,13 +30,31 @@ class TokenData(BaseModel):
     username: Optional[str] = None
 
 class TeamMember(BaseModel):
-    Name: str
-    Role: str
-    Email: EmailStr
+    name: str
+    role: str
+    email: EmailStr
     contact:  str
-    TechStack: str
-    Hobbies: str 
+    tech_stack: str 
+    hobbies: Optional[str] = None
+class TeamMembeResponse(BaseModel):
+    id: int
+    name:str
+    role: str
+    email:EmailStr
+    contact: str
+    tech_stack: str 
+    hobbies: Optional[str] = None
+    class Config:
+        orm_mode = True
+
 class CreateTeam(BaseModel):
-    teamName: str 
-    teamSize: int
+    team_name: str 
+    team_size: int
     members: List[TeamMember]
+class showTeam(BaseModel):
+    id: int
+    team_name:str
+    team_size: int
+    members: List[TeamMembeResponse] = []
+    class Config:
+        orm_mode = True
