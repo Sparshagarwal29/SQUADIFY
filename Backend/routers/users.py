@@ -21,6 +21,20 @@ def get_User(id:int , db: db_dependency):
         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
     return user
 
+@router.get("/User/{id}/team",status_code=204,tags=["Users"])
+def get_team(id:int,db: db_dependency):
+    user = db.query(model.User).filter(model.User.id == id).first()
+    if not user:
+         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
+    team = user.teams
+    if team:
+        return{"team": Schema.showTeam.from_orm(team), "msg": "team detailed recevied "}
+    return {"message": "No team created. Please create a team."}
+
+
+
+
+
 @router.post("/User",status_code=201,tags=["Users"])  #this is someWhat similar to API (Application Programming Interface)
 def create_User(user: Schema.UserCreate,db: db_dependency):
     existing_user = db.query(model.User).filter(model.User.email == user.email).first()
@@ -33,12 +47,13 @@ def create_User(user: Schema.UserCreate,db: db_dependency):
     return newUser
 
 @router.delete("/User/{id}",status_code=204,tags=["Users"])
-def delt_User(id:int,db: db_dependency):
+def delete_User(id:int,db: db_dependency):
     deleteCount = db.query(model.User).filter(model.User.id == id).delete(synchronize_session=False)
     if deleteCount == 0:
         raise HTTPException(status_code=404, detail=f"User with id {id} not found")
     db.commit()    
     return "deleted"
+
 
 @router.put("/User/{id}",tags=["Users"])
 def update(id:int , user: Schema.User , db: db_dependency):

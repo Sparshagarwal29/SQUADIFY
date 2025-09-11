@@ -51,10 +51,12 @@ class CreateTeam(BaseModel):
     team_name: str 
     team_size: int
     members: List[TeamMember]
+    
 class showTeam(BaseModel):
     id: int
     team_name:str
     team_size: int
+    creator_id: int
     members: List[TeamMembeResponse] = []
     class Config:
         orm_mode = True
